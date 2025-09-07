@@ -7,6 +7,6 @@ import WelcomeMessage from './components/WelcomeMessage.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-    <WelcomeMessage />
+    < WelcomeMessage />
   </StrictMode>,
 )
