@@ -35,7 +35,7 @@ function App() {
       </p>
        <WelcomeMessage />
         <Header />
-       <MainContent/>
+       <MainContent />
         <Footer />
     </>
 
