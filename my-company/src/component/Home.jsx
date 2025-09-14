@@ -1,8 +1,8 @@
 function Home() {
      return (
-       <div style={{ padding: '20px' }}>
-         <h1>Welcome to Our Company</h1>
-         <p>We are dedicated to delivering excellence in all our services.</p>
+       <div style={{ padding: '20px', textAlign: "center" }}>
+         <h1 style={{ color: "#34495e" }}>Welcome to Our Company</h1>
+         <p style={{ fontSize: "18px", color: "#7f8c8d" }}>We are dedicated to delivering excellence in all our services.</p>
        </div>
      );
    }
