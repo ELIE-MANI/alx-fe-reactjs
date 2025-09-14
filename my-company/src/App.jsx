@@ -4,7 +4,7 @@ import Home from './component/Home'
 import About from './component/About'
 import Contact from './component/Contact'
 import Services from './component/Services'
-import NavBar from './component/Navbar'
+import NavBar from './component/Navbar.jsx'
 
 
 function App() {
