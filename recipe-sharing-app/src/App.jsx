@@ -4,8 +4,10 @@ import RecipeList from "./components/RecipeList";
 function App() {
   return ( 
   <>
+  <h1>My Recipes</h1>
 <RecipeList />
 <AddRecipeForm />
+
   </>
 
 

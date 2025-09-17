@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import useRecipeStore from './recipeStore';
 
-  const AddRecipeForm = () => {
+  const AddRecipeForm = ({recipe}) => {
     const addRecipe = useRecipeStore(state => state.addRecipe);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -27,6 +28,7 @@ import useRecipeStore from './recipeStore';
           placeholder="Description"
         />
         <button type="submit">Add Recipe</button>
+    
       </form>
     );
   };
