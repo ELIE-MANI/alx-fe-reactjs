@@ -37,7 +37,7 @@ const [error, setError]= useState(false)
     {/* Loading state */}
     {loading && <p>loading...</p>}
      {/* Error state */}
-    {error && <p>Looks like we can't find the user</p>}
+    {error && <p>Looks like we cant find the user</p>}
 
     {data && (
      <> 
