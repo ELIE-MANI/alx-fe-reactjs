@@ -40,10 +40,16 @@ const [error, setError]= useState(false)
     {error && <p>Looks like we can't find the user</p>}
 
     {data && (
-      <div>
+     <> 
+     <div>
+      <img src={data.avatar_url} alt={data.login} />
+     </div>
+    <div>
       <h2>{data.name || data.login}</h2>
+      <a href={data.html_url} target="_blank" rel="noreferrer">View Github Profile</a>
 
       </div>
+      </>
     )}
 </>
   );
