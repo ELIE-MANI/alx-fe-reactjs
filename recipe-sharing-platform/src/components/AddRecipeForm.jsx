@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function AddRecipeForm({ recipes, setRecipes }) {
 const [title, setTitle]= useState("");
 const [ingredients, setIngredients]= useState("");
-const [instructions, setInstructions]= useState("");
+const [steps, setSteps]= useState("");
 const navigate = useNavigate();
 
 const handleSubmit = (e) => {
@@ -19,13 +19,13 @@ const handleSubmit = (e) => {
     title,
     summary: ingredients.split('\n')[0],
     ingredients: ingredients.split('\n'),
-    instructions: instructions.split('\n'),
+    steps: steps.split('\n'),
     image: "https://via.placeholder.com/300x200?text=New+Recipe",
   };
   setRecipes([...recipes, newRecipe]);
   setTitle("");
 setIngredients("");
-setInstructions("");
+  setSteps("");
 
 
   alert("Recipe added successfully!");
@@ -58,9 +58,9 @@ setInstructions("");
       <div>
         <label htmlFor="instructions" className="block mb-1 text-gray-700">Instructions</label>
         <textarea
-          placeholder="Enter instructions (one per line)"
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
+          placeholder="Enter steps (one per line)"
+          value={steps}
+          onChange={(e) => setSteps(e.target.value)}
           className="w-full border rounded px-3 py-2"
         />
       </div>
