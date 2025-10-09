@@ -1,9 +1,10 @@
 import { useEffect,useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
 const[recipes, setRecipes] = useState([]);
 useEffect(() => {
-  fetch('src/data.json')
+  fetch('/data.json')
   .then(response => response.json())
   .then(data => setRecipes(data))
   .catch(error => console.error('Error fetching recipes:', error));
@@ -22,9 +23,9 @@ useEffect(() => {
         <div className="p-4">
           <h2 className="text-xl font-semibold mb-2 text-gray-800">{recipe.title}</h2>
          <p className="text-gray-600 text-sm mb-4">{recipe.summary}</p>
-         <button
-         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-         >View Recipe</button>
+         <Link to={`/recipe/${recipe.id}`}  
+         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+        View Recipe</Link>
       </div>
       </div>
      ))}
