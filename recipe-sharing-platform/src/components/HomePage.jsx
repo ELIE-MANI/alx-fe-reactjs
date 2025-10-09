@@ -1,8 +1,8 @@
 import { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 
-function HomePage() {
-const[recipes, setRecipes] = useState([]);
+function HomePage({ recipes:initialRecipes }) {
+const[recipes, setRecipes] = useState(initialRecipes || []);
 useEffect(() => {
   fetch('/data.json')
   .then(response => response.json())
@@ -14,7 +14,10 @@ useEffect(() => {
   return ( <>
   <div className="min-h-screen bg-gray-100 p-6">
     <h1 className="text-2xl font-bold mb-4 text-gray-800">🍽️Recipe Sharing Platform</h1>
-    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <Link to="/add-recipe" className= "mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" >
+      + Add New Recipe
+    </Link>
+    <div className=" mt-4 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
      {recipes.map((recipe) => (
       <div key={recipe.id}
        className="bg-white rounded-2xl shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300 overflow-hidden"
