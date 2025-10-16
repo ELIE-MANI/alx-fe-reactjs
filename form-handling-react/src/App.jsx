@@ -1,6 +1,8 @@
+import FormikForm from "./components/FormikForm"
+
 function App() {
   return ( <>
-  <h1>Hello there</h1>
+  <FormikForm/>
   </> );
 }
 
