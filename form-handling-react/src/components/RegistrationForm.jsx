@@ -1,26 +1,41 @@
 import { useState } from "react";
 
 function RegistrationForm() {
-  
+  // Step 1: State for form fields
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({})
 
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = {};
 
-    if (!username || !email || !password) {
-      setError("All fields are required!");
+    
+    if (!username) {
+      newErrors.username = "Username is required";
+    }
+    if (!email) {
+      newErrors.email = "Email is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
+    }
+
+  
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    setError("");
+  
+    setErrors({});
+
     console.log("User registered:", { username, email, password });
     alert("Registration successful!");
 
-  
+    // ✅ Reset form
     setUsername("");
     setEmail("");
     setPassword("");
@@ -30,34 +45,44 @@ function RegistrationForm() {
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-center">Register (Controlled)</h2>
 
-      {error && <p className="text-red-600 mb-2">{error}</p>}
-
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}             
-          onChange={(e) => setUsername(e.target.value)}  
-          className="p-2 border rounded"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="p-2 border rounded w-full"
+          />
+          {errors.username && <p className="text-red-600 text-sm">{errors.username}</p>}
+        </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}               
-          onChange={(e) => setEmail(e.target.value)}     
-          className="p-2 border rounded"
-        />
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-2 border rounded w-full"
+          />
+          {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}          
-          onChange={(e) => setPassword(e.target.value)}  
-          className="p-2 border rounded"
-        />
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="p-2 border rounded w-full"
+          />
+          {errors.password && <p className="text-red-600 text-sm">{errors.password}</p>}
+        </div>
 
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+        >
           Register
         </button>
       </form>
