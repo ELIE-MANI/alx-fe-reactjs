@@ -1,76 +1,68 @@
 import { useState } from "react";
 
 function RegistrationForm() {
-const [formData, setFormData]= useState({
-  username: "",
-  email:"",
-  password:"",
-
-});
-const [error, setError]= useState("");
-const handleChange = (e) => {
-  const {name, value} = e.target;
-  setFormData({...formData, [name]:value})
-};
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if(!formData.username || !formData.email || !formData.password) {
-  setError("all field are required")
-return;
-}
- setError("");
-    console.log("User Registered", formData);
-    alert("Registration Successful!");
-}
+  
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (!username || !email || !password) {
+      setError("All fields are required!");
+      return;
+    }
 
-  return ( <>
-<div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-md">
-  <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
-  {error && <p className="text-red-600 mb-2">{error}</p>}
+    setError("");
+    console.log("User registered:", { username, email, password });
+    alert("Registration successful!");
 
-  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-   <input 
-   type="text"
-   placeholder="Username"
-   name="username"
-   value={formData.username}
-   onChange={handleChange}
-    className="p-2 border rounded"
-   />
-   
-  <input
-   type="email"
-   name="email"
-   placeholder="Email"
-   value={formData.email}
-   onChange={handleChange}
-   className="p-2 border rounded"
-  />
+  
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
 
-  <input
-   type="password"
-   name="password"
-   placeholder="Password"
-   value={formData.password}
-   onChange={handleChange}
-   className="p-2 border rounded"
-  />
+  return (
+    <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-center">Register (Controlled)</h2>
 
-  <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-    Register
-  </button> 
+      {error && <p className="text-red-600 mb-2">{error}</p>}
 
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}             
+          onChange={(e) => setUsername(e.target.value)}  
+          className="p-2 border rounded"
+        />
 
-  </form>
-</div>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}               
+          onChange={(e) => setEmail(e.target.value)}     
+          className="p-2 border rounded"
+        />
 
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}          
+          onChange={(e) => setPassword(e.target.value)}  
+          className="p-2 border rounded"
+        />
 
-
-  </> );
+        <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+          Register
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default RegistrationForm;
