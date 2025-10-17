@@ -1,6 +1,9 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import BlogPost from "./components/BlogPost";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
 
@@ -15,13 +18,17 @@ function App() {
       <Route path="/" element={<Home/>}/>
       {/*Protected Route*/}
       <Route 
-      path="/profile/"
+      path="/profile/*"
       element={
         <ProtectedRoute>
         <Profile/>
         </ProtectedRoute>
-        
-      }/>
+        }/>
+        {/*Dynamic route*/}
+        <Route path="/posts/:id" element={<BlogPost/>}/>
+
+      {/*Login page*/}
+      <Route path="/login" element={<Login/>}/>
 
     </Routes>
     

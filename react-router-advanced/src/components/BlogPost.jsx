@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-function BlofPost() {
+function BlogPost() {
   const {id} = useParams();
 
   return ( 
@@ -11,4 +11,4 @@ function BlofPost() {
    );
 }
 
-export default BlofPost;
+export default BlogPost;
