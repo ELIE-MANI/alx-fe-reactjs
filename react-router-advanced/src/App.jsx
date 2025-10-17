@@ -25,7 +25,7 @@ function App() {
         </ProtectedRoute>
         }/>
         {/*Dynamic route*/}
-        <Route path="/posts/:id" element={<BlogPost/>}/>
+        <Route path="/blog/:id" element={<BlogPost/>}/>
 
       {/*Login page*/}
       <Route path="/login" element={<Login/>}/>
